@@ -1,0 +1,41 @@
+<div class="container p-5 border mt-5">
+    <h1 class="text-center">{{product.name}}</h1>
+    <form [formGroup]="productForm" (submit)="updateProduct(productForm.value)">
+        <div class="mb-3">
+            <label for="name" class="form-label">name</label>
+            <input type="text" class="form-control" id="name" name="name" formControlName="name">
+        </div>
+        <div *ngIf="productForm.get('name')?.errors && productForm.get('name')?.touched">
+            <small *ngIf="productForm.get('name')?.getError('required')" class="text-danger">* name is required</small>
+            <small *ngIf="productForm.get('name')?.getError('minlength')" class="text-danger">* name must be at least 2 charcters</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">description</label>
+            <input type="text" class="form-control" id="description" name="description" formControlName="description">
+        </div>
+        <div *ngIf="productForm.get('description')?.errors && productForm.get('description')?.touched">
+            <small *ngIf="productForm.get('description')?.getError('required')" class="text-danger">* description is required</small>
+            <small *ngIf="productForm.get('description')?.getError('minlength')" class="text-danger">* description must be at least 2 charcters</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">price</label>
+            <input type="text" class="form-control" id="price" name="price" formControlName="price">
+        </div>
+        <div *ngIf="productForm.get('price')?.errors && productForm.get('price')?.touched">
+            <small *ngIf="productForm.get('description')?.getError('required')" class="text-danger">* price is required</small>
+            <small *ngIf="productForm.get('description')?.getError('min')" class="text-danger">* price must be at least 2</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="quantity" class="form-label">quantity</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" formControlName="quantity">
+        </div>
+        <div *ngIf="productForm.get('quantity')?.errors && productForm.get('quantity')?.touched">
+            <small *ngIf="productForm.get('description')?.getError('required')" class="text-danger">* quantity is required</small>
+        </div>
+
+        <button class="btn btn-success" type="submit" [disabled]="productForm.invalid">save</button>
+    </form>
+</div>

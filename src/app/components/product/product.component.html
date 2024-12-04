@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  @if(bar)
+  {
+      <span matSnackBarLabel>Your Custom Message Here!</span>
+      <button mat-button matSnackBarAction (click)="_snackBarRef.dismiss()">Dismiss</button>
+  }
+    <div class="pb-5">
+      <a class="btn btn-info" routerLink="/addProduct">+ New Product</a>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th class="bg-dark text-warning">NO.</th>
+            <th class="bg-dark text-warning">name</th>
+            <th class="bg-dark text-warning">description</th>
+            <th class="bg-dark text-warning">price</th>
+            <th class="bg-dark text-warning">quantity</th>
+            <th class="bg-dark text-warning">action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products;let i=index;trackBy: trackById">
+              <th>{{i+1}}</th>
+              <td>{{product.name}}</td>
+              <td>{{product.description}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.quantity}}</td>
+              <td class="d-flex justify-content-center">
+                  <a class="btn btn-success" [routerLink]="['/productDetails/',product.id]">view</a>
+                  <a class="btn btn-warning" [routerLink]="['/updateProduct/',product.id]">update</a>
+                  <a class="btn btn-danger" (click)="delteProduct(product.id)">delete</a>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+</div>

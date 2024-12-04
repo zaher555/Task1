@@ -1,0 +1,27 @@
+@if(bar)
+{
+    <span matSnackBarLabel>Your Custom Message Here!</span>
+    <button mat-button matSnackBarAction (click)="_snackBarRef.dismiss()">Dismiss</button>
+}
+<div class="m-auto w-50 border p-5 mt-5">
+    <h1 class="text-center">Login</h1>
+    <form [formGroup]="loginForm" (submit)="login(loginForm.value)">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email" name="email">
+        </div>
+        <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+            <small *ngIf="loginForm.get('email')?.getError('required')" class="text-danger">* email is required</small>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" class="form-control" formControlName="password" name="password">
+        </div>
+        <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+            <small *ngIf="loginForm.get('password')?.getError('required')" class="text-danger">* password is required</small><br>
+            <small *ngIf="loginForm.get('password')?.getError('minlength')" class="text-danger">* password must be at least 8 charcters</small><br>
+            <small *ngIf="loginForm.get('password')?.getError('pattern')" class="text-danger">* password must be at least 3 charcters with at least 3 numbers</small>
+        </div>
+        <button class="btn btn-success pe-5 ps-5 d-block m-auto" type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form>
+</div>

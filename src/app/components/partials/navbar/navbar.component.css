@@ -1,0 +1,23 @@
+nav
+{
+  background-color: black;
+}
+.pageName
+{
+  font-weight: bold;
+}
+.dropList
+{
+  left: -75%;
+}
+@media(min-width:1200px)
+{
+  form
+  {
+    margin-left: 5%;
+  }
+  .main-list > li
+  {
+    margin-left: 5%;
+  }
+}
