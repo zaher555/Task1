@@ -1,0 +1,22 @@
+html,body
+{
+  width: 100%;
+  height: 100%;
+  direction: rtl;
+  margin-top: .5%;
+  padding-bottom: .5%;
+  *
+  {
+    box-sizing: border-box;
+    font-family: "Cairo", serif;
+  }
+  a
+  {
+    text-decoration: none;
+  }
+  li
+  {
+    list-style: none;
+  }
+}
+
